@@ -1,4 +1,8 @@
 let fs = require("fs");
+/**
+ * inputN : string , 준규가 가지고있는 동전 종류
+ * inputK : string, 준규가 사용하여 가치의 합
+ */
 const file = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
 
 let input = fs.readFileSync(file).toString().trim().split("\n");
