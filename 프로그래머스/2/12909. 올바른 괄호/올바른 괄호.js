@@ -1,10 +1,16 @@
 function solution(s){
-    let stackCount = 0
-    let arrLeng = s.length
+ let stack = [];
     
-    for (let i = 0; i < arrLeng; i++) {
-        s[i] === "(" ? stackCount += 1 : stackCount += -1;
-        if(stackCount < 0) return false
+    for(const bracket of s) {
+        if(bracket === '(') {
+            stack.push(bracket)
+        } else {
+            if(stack.length === 0) {
+                return false
+            }
+            stack.pop()
+        }
     }
-    return stackCount === 0 ? true : false
+    
+return stack.length === 0
 }
