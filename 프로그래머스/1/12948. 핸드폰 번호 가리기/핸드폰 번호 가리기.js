@@ -1,3 +1,4 @@
 function solution(phone_number) {
- return "*".repeat(phone_number.length - 4) + phone_number.slice(-4)
+ const length = phone_number.length;
+    return "*".repeat(length - 4) + phone_number.slice(-4)
 }
