@@ -1,16 +1,20 @@
 function solution(numbers, target) {
-    return countWays(numbers, target, 0, 0);
-}
-
-function countWays(numbers, target, index, currentSum) {
-    if (index === numbers.length) {
-        return currentSum === target ? 1 : 0;
+    let count = 0;
+    
+    function dfs(index, sum) {
+        if(index === numbers.length) {
+            if(sum === target) {
+                count++;
+            }
+            return;
+        }
+        
+        dfs(index + 1, sum + numbers[index]);
+        
+        dfs(index + 1, sum - numbers[index]);
     }
     
-    // 현재 숫자를 더하는 경우
-    const add = countWays(numbers, target, index + 1, currentSum + numbers[index]);
-    // 현재 숫자를 빼는 경우
-    const subtract = countWays(numbers, target, index + 1, currentSum - numbers[index]);
+    dfs(0,0);
     
-    return add + subtract;
+    return count;
 }
